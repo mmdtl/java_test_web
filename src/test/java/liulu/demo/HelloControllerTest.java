@@ -29,10 +29,11 @@ public class HelloControllerTest {
         this.mvc.perform(get("/")).andExpect(status()
                 .isOk()).andExpect(content().string("hello"));
     }
-
+    @Autowired
+    private ObjectMapper objectMapper;
     @Test
-    public void outputTest(@Autowired ObjectMapper  objectmapper) throws Exception{
-        ObjectNode node = objectmapper.createObjectNode();
+    public void outputTest() throws Exception{
+        ObjectNode node = this.objectMapper.createObjectNode();
         node.put("id","1").toString();
         String requestParam1 = "1";
         String requestParam2 = "dfsdf";
